@@ -18,13 +18,10 @@ jobs:
           distribution: temurin
 
       - name: Build
-        run: mvn -B build
+        run: mvn -B verify
 
-      - name: Upload
-        uses: marvinpinto/action-automatic-releases@master
+      - name: Upload Artifact #I'm gay
+        uses: actions/upload-artifact@v2
         with:
-          title: "Plugin"
-          automatic_release_tag: "la"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          files: "target/"
-          prerelease: false
+          name: Builded jars
+          path: target
