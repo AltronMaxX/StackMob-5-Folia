@@ -1,0 +1,30 @@
+name: Java CI with Gradle
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Set up JDK
+        uses: actions/setup-java@main
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Build
+        run: mvn -B verify
+
+      - name: Upload
+        uses: marvinpinto/action-automatic-releases@master
+        with:
+          title: "Plugin"
+          automatic_release_tag: "la"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          files: "*/target/*.jar"
+          prerelease: false
