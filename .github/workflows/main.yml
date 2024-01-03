@@ -26,5 +26,5 @@ jobs:
           title: "Plugin"
           automatic_release_tag: "la"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          files: "*/target/*.jar"
+          files: "target/"
           prerelease: false
